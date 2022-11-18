@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/plantilla :: head"></head>
+<body>
+	<header th:replace="layout/plantilla :: header"></header>
+
+	<div class="container p-5 my-5 bg-light">
+		<div class="card col-md-6">
+			<div class="card-body">
+				<h4 class="card-title">Login</h4>
+				<div class="card-text">
+					<form method="POST" th:action="@{/login}">
+						<div class="mb-3 mt-3">
+							<label for="username" class="form-label">Username:</label> <input
+								type="text" class="form-control" id="username"
+								placeholder="Escriba el nombre de usuario" name="username">
+						</div>
+						<div class="mb-3">
+							<label for="password" class="form-label">Password:</label> <input
+								type="password" class="form-control" id="password"
+								placeholder="Escriba la contraseña" name="password">
+						</div>
+						<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+							<input type="submit" class="btn btn-primary" value="Login" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/plantilla :: footer"></footer>
+</body>
+</html>

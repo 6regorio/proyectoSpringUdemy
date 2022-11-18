@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:fragment="head">
+<title th:text="#{plantilla.titulo}"></title>
+<meta charset="UTF-8" />
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" />
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+
+	<header th:fragment="header">
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/"><span
+					th:text="#{plantilla.titulo}"></span></a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#mynavbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="mynavbar">
+					<ul class="navbar-nav me-auto">
+						<li class="nav-item"><a class="nav-link" href="/"> <span
+								th:text="#{barra.inicio}"></span></a></li>
+					</ul>
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item" sec:authorize="isAuthenticated()"><a
+							class="nav-link" href="javascript:void(0)"> <i
+								class="fas fa-user"></i> <span th:text="#{barra.bienvenido}"></span>
+								<span sec:authentication="name"></span>
+						</a></li>
+						<li class="nav-item" sec:authorize="isAuthenticated()">
+							<form method="POST" th:action="@{/logout}">
+								<a class="nav-link" href="#" onclick="this.parentNode.submit();">
+									<i class="fas fa-user-times"></i> <span
+									th:text="#{barra.logout}"></span>
+								</a>
+							</form>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<section id="main-header" class="py-2 bg-info text-white">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<h1>
+							<i class="fas fa-cog"></i> <span th:text="#{plantilla.titulo}"></span>
+						</h1>
+					</div>
+				</div>
+			</div>
+		</section>
+	</header>
+
+	<footer th:fragment="footer">
+		<div class="mt-5 p-5 bg-warning text-white text-center">
+			<p>
+				<a th:href="@{/(lang=es)}">ES</a> | <a th:href="@{/(lang=en)}">EN</a>
+				| [[#{plantilla.pie-pagina}]] &copy; <a href="http://www.google.es"
+					target="_blanck">2022</a>
+			</p>
+		</div>
+	</footer>
+</body>
+</html>
