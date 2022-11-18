@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
@@ -36,4 +37,7 @@ public class Persona implements Serializable {
   private String email;
 
   private String telefono;
+  
+  @NotNull
+  private Float saldo;
 }

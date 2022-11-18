@@ -40,9 +40,17 @@ public class ControladorInicio {
     log.info("Estamos en la principal de ControladorInicio");
     log.info("usuario que hizo login:" + user);
     var personas = personaServicio.listarPersonas();
+    
+    var saldoTotal = 0D;
+    for (var p : personas) {
+      saldoTotal+=p.getSaldo();
+    }
 
     // Aquí le mando el listado de personas
     model.addAttribute("personas", personas);
+    model.addAttribute("saldoTotal", saldoTotal);
+    model.addAttribute("totalClientes", personas.size());
+
 
     return "index";
   }
